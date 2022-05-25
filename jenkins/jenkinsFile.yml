@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jenkins-docs/simple-java-maven-app.git']]])
+            }
+        }
+        stage('2_stage') {
+            steps {
+                echo 'Hello World!'
+            }
+        }
+        stage('3_stage') {
+            steps {
+                echo 'Hello World!!'
+            }
+        }
+    }
+}
